@@ -1,7 +1,12 @@
 require 'bundler'
 Bundler.require
 
-require_relative 'lib/player'
-require_relative 'lib/game'
+$:.unshift File.expand_path("/home/jbe29/dossierlinux/20221020ruby_morpion/lib")
+require 'player'
+require 'boardcase'
+require 'game'
+require 'board'
+require 'show'
 
-game
+
+Game.new.perform
