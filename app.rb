@@ -10,3 +10,5 @@ require 'show'
 
 
 Game.new.perform
+#Game.new.ask_name
+#Board.new.show_board

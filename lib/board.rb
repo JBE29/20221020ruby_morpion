@@ -5,7 +5,7 @@ class Board
     attr_accessor :array_cases, :choose_case, :game_state_variable, :game_nil_variable
   
     def initialize
-      # Initialiser les 9 BoardCases
+      # force all cases to empty
       @A1 = BoardCase.new("a1", " ")
       @A2 = BoardCase.new("a2", " ")
       @A3 = BoardCase.new("a3", " ")
@@ -16,7 +16,7 @@ class Board
       @C2 = BoardCase.new("c2", " ")
       @C3 = BoardCase.new("c3", " ")
   
-      @game_state_variable = false
+      @game_state_variable = false #to verify win combination
   
       @game_nil_variable = false
   
@@ -25,8 +25,9 @@ class Board
     end
   
     # Fonction qui écrit le symbole de l'utilisateur dans le cas choisi par l'utilisateur actuel
-    def write_on_case (case_choose, player_symbol)
-      @array_cases.map { |item| item.position == case_choose ? item.content = player_symbol  : item }
+    def write_on_case (choice, player_symbol)
+
+      @array_cases.map { |item| item.position == choice ? item.content = player_symbol  : item }
     end
   
     # Cette fonction vérifie chaque possibilité de gain et obtient la variable game_state_variable à true si elle en trouve
@@ -80,14 +81,15 @@ class Board
   
     def show_board
       # Afficher le plateau vide à l'initialisation et obtenir une variable à chaque tour de joueur
-      puts "   1   2  3"
-      puts " a #{@A1.content} | #{@A2.content} | #{@A3.content}"
-      puts "   _________"
+      puts "         1     2    3"
       puts
-      puts " b #{@B1.content} | #{@B2.content} | #{@B3.content}"
-      puts "   _________"
+      puts " a       #{@A1.content}  |  #{@A2.content}  |  #{@A3.content} "
+      puts "        _______________"
       puts
-      puts " c #{@C1.content} | #{@C2.content} | #{@C3.content}"
+      puts " b       #{@B1.content}  |  #{@B2.content}  |  #{@B3.content}"
+      puts "        _______________"
+      puts
+      puts " c       #{@C1.content}  |  #{@C2.content}  |  #{@C3.content}"
   
     end
   end #end of class
