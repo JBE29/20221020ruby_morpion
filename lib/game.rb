@@ -32,7 +32,7 @@ class Game
     # Selon le cas, l'utilisateur veut jouer et retourner le symbole dans la case sélectionné
     def choose_case (player)
       # Si un joueur gagne
-        
+        puts
         puts "A toi de jouer #{player.name} avec le symbole '#{player.symbol}' choisis une case et ne te trompe pas !"
      #   puts "Voici les positions disponibles : #{@array_cases[]}"
         print "> "
@@ -48,13 +48,15 @@ class Game
         system("clear")
         puts "     #{@players[0].name} joue avec les X"
         puts "     #{@players[1].name} joue avec les O"
+        puts
+        puts
         @board.show_board
         puts 
         @board.game_state
         if @board.game_state_variable == true
             puts "Bravo #{player.name}!! Tu as gagné !!"
           # Si le jeu est nul
-          elsif @board.game_nil_variable == true
+          elsif @already_choosen == @array_cases #  board.game_nil_variable == true
             puts "la partie est finie, match nul!!"
           # Quand le jeu tourne
           else
@@ -69,14 +71,18 @@ class Game
   
       if new_game != "quit"
         # appeler le 'self perform' pour jouer encore
-        self.perform
+        perform
       end
     end
   
     def perform
+        initialize()
       ask_name
+      system("clear")
       puts "Le nom du joueur 1 est #{@players[0].name} et son symbole est #{@players[0].symbol}"
       puts "Le nom du joueur 2 est #{@players[1].name} et son symbole est #{@players[1].symbol}"
+      puts
+      puts
       # Affiche le plateau de jeu vide avant de jouer
       @board.show_board
       select_player()

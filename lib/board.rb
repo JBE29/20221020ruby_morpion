@@ -76,7 +76,7 @@ class Board
   
     # Méthode qui vérifie si le plateau est plein de "X" et "O" pour arrêter le jeu en tant que jeu nul (pas terminé)
     def game_nil
-      @array_cases.each { |item| item.content == /[:SPACE:]/ ? @game_nil_variable = true : @game_nil_variable = false }
+      @array_cases.each { content != " " ? @game_nil_variable = true : @game_nil_variable = false }
     end
   
     def show_board
